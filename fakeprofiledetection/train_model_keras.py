@@ -11,7 +11,6 @@ import joblib
 df = pd.read_csv("feature_engineered_dataset.csv")  # Adjust path if needed
 df["Friends per Post"] = (df["Friends per Post"] > 10).astype(int)
 
-
 # 2. Feature/Label Split
 X = df.drop("Friends per Post", axis=1)
 y = df["Friends per Post"]
@@ -59,5 +58,8 @@ print("First 5 predicted values:", y_pred_classes[:5])
 print(f"Accuracy: {accuracy * 100:.2f}%")
 
 # 10. Save Model and Scaler
-model.save("fake_profile_keras_model.h5")
-joblib.dump(scaler, "scaler.pkl")
+# Save the trained model
+model.save("model/keras_model.h5")
+
+# Save the trained scaler
+joblib.dump(scaler, "model/scaler.pkl")
